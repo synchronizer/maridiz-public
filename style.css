@@ -1792,6 +1792,56 @@ html {
 }
 
 
+.timeline {
+    --__timeline-color:var(--border-color);
+  }
+  
+  .timeline__item {
+      position: relative;
+    padding-bottom: 3rem;
+    padding-left: 3rem;
+    margin-left: -.75em;
+    margin-top: 2rem;
+    padding-top: 1px;
+  }
+  
+  
+  .timeline__item > *:first-child {
+    margin-top: -2rem;
+  }
+  
+  
+  .timeline__item:not(:last-child) {
+      border-left: 1px solid var(--__timeline-color);
+  }
+  
+  .timeline__item::before {
+    --__circle-size: 1rem;
+    content: '';
+    position: absolute;
+    top: -1.5rem;
+    left: -.5rem;
+    display: block;
+    width: calc(var(--__circle-size) - 1px);
+    height: calc(var(--__circle-size) - 1px);
+    border-radius: 100%;
+    background-color:  var(--__timeline-color);
+  }
+  
+  .timeline__year{
+    font-size: 2rem;
+    line-height: 2rem;
+    font-weight: 800;
+  }
+  .timeline__title {
+    font-size: var(--font-size-subtitle);
+    line-height: var(--line-height-subtitle);
+    margin-top: .75rem;
+  }
+  
+  .timeline__text {
+    margin-top: .75rem;
+  }
 .wide {
     margin-inline: max(
         (100% - var(--content-width-l)) / 2,
