@@ -1841,57 +1841,73 @@ html {
 
 
 .timeline {
-  --__timeline-color:var(--button-bg);
-  margin-top: 6rem;
+  --__timeline-color: var(--button-bg);
+  --__timeline-items-gap: 3rem;
+  --__circle-size: 1.25rem;
+  --__circle-top: .25rem;
+  --__line-width: 2px;
+  --__circle-line-gap: .5rem;
+}
+
+.timeline__item:has(.timeline__year) {
+  --__circle-top: .5rem;
 }
 
 .timeline__item {
-    position: relative;
-  padding-bottom: 3rem;
+  position: relative;
   padding-left: 8%;
-  margin-left: .4em;
-  margin-top: 2rem;
-  padding-top: .01px;
-}
-
-
-.timeline__item > *:first-child {
-  margin-top: -2rem;
-}
-
-
-.timeline__item:not(:last-child) {
-    border-left: 1px solid var(--__timeline-color);
+  margin-top: var(--__timeline-items-gap);
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
 }
 
 .timeline__item::before {
-  --__circle-size: 1rem;
   content: '';
   position: absolute;
-  top: -1.5rem;
-  left: -.5rem;
+  top: var(--__circle-top);
+  left: 0;
   display: block;
-  width: calc(var(--__circle-size) - 1px);
-  height: calc(var(--__circle-size) - 1px);
+  width: var(--__circle-size);
+  height: var(--__circle-size);
   border-radius: 100%;
-  background-color:  var(--__timeline-color);
+  background-color: var(--__timeline-color);
 }
 
-.timeline__year{
-  font-size: 2rem;
-  line-height: 2rem;
+.timeline__item:not(:last-child):after {
+  content: '';
+  position: absolute;
+  background-color: var(--__timeline-color);
+  width: var(--__line-width);
+  top: calc(
+    var(--__circle-size) + 
+    var(--__circle-top) + 
+    var(--__circle-line-gap)
+  );
+  bottom: calc(
+    0px - 
+    var(--__timeline-items-gap) - 
+    var(--__circle-top) + 
+    var(--__circle-line-gap)
+  );
+  left: calc(
+    (var(--__circle-size) - 
+    var(--__line-width))
+  / 2);
+}
+
+.timeline__year {
+  font-size: var(--font-size-title);
+  line-height: var(--line-height-title);
   font-weight: 800;
 }
+
 .timeline__title {
   font-size: var(--font-size-subtitle);
   line-height: var(--line-height-subtitle);
   font-weight: var(--font-weight-subtitle);
-  margin-top: .75rem;
 }
 
-.timeline__text {
-  margin-top: .75rem;
-}
 .wide {
     margin-inline: max(
         (100% - var(--content-width-l)) / 2,
