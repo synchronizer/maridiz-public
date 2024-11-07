@@ -373,6 +373,20 @@
     --border-radius: var(--bd-radius-L);
     --corner-bottom-left-mask-size: calc(var(--border-radius) * 2);
 } */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+code,
+ul,
+ol,
+.text-indented
+{
+    margin-inline: .5rem;
+}
 .notifications {
     position: fixed;
     right: 0;
@@ -807,6 +821,25 @@
 .clients-map__search:not(:focus-within) .clients-map__search-suggest {
     display: none;
 }
+.columns {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: 1.5rem;
+}
+
+.columns_reverse {
+  flex-direction: row-reverse;
+}
+
+.columns__item > :first-child {
+  margin-top: 0;
+}
+
+.columns__item {
+  flex-basis: var(--content-width-s);
+  flex-grow: 1;
+}
 .creeping-line {
     color: #fff;
     background: var(--black-bg);
@@ -944,6 +977,64 @@
     }
     
 }
+.fullscreen-slider {
+    position: relative;
+    /* margin-inline: calc((100% - 100vw) / 2);
+    padding-inline: calc((100vw - 100%) / 2); */
+    
+}
+
+.fullscreen-slider__content {
+    position: relative;
+    margin-inline: calc((100% - 100vw) / 2);
+    padding-inline: calc((100vw - 100%) / 2);
+    overflow-x: scroll;
+    display: flex;
+    scroll-snap-type: x mandatory;
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
+}
+.fullscreen-slider__content::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome browsers */
+  }
+
+.fullscreen-slider__item {
+    box-sizing: content-box;
+    flex-shrink: 0;
+    width: 100%;
+    padding-inline: calc((100vw - 100%) / 2);
+    scroll-snap-align: start;
+}
+
+
+
+.fullscreen-slider__left,
+.fullscreen-slider__right {
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+}
+
+.fullscreen-slider__left {
+  left: 1.5rem;
+  margin-left: max(
+    -6rem, 
+    (100% - 100vw) / 2
+    );
+}
+
+.fullscreen-slider__right {
+  right: 1.5rem;
+  margin-right: max(
+    -6rem, 
+    (100% - 100vw) / 2
+    );
+}
+  .fullscreen-slider__left_hide,
+  .fullscreen-slider__right_hide {
+    display: none;
+    pointer-events: none;
+  }
 .gap {
   height: 1.5rem;
   width: 1.5rem;

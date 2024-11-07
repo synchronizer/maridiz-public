@@ -859,6 +859,66 @@ Array.from(document.querySelectorAll('.example')).forEach(example => {
         example__htmlSrc.value = reset;
     })
 })
+Array.from(document.querySelectorAll('.fullscreen-slider')).forEach(fullscreenSlider => {
+    const   left = fullscreenSlider.querySelector('.fullscreen-slider__left'),
+            right = fullscreenSlider.querySelector('.fullscreen-slider__right'),
+            content = fullscreenSlider.querySelector('.fullscreen-slider__content');
+
+
+    const checkLeftArrow = () => {
+        console.log(
+            'content.scrollLeft: ' + content.scrollLeft,
+            'content.scrollWidth: ' + content.scrollWidth,
+            'content.offsetWidth: ' + content.offsetWidth,
+            'content.offsetLeft: ' + content.offsetLeft,
+            'content.clientWidth: ' + content.clientWidth,
+        );
+        console.dir(content);
+        
+        
+        if (content.scrollLeft + content.offsetLeft <= 1) {
+            left.classList.add('fullscreen-slider__left_hide');
+            return
+        }
+
+        left.classList.remove('fullscreen-slider__left_hide')
+    }
+
+    const checkRightArrow = () => {
+        console.log(content.scrollWidth - content.scrollLeft - content.offsetWidth + content.offsetLeft);
+        
+        if (content.scrollWidth - content.scrollLeft - content.offsetWidth + content.offsetLeft <= 1) {
+            right.classList.add('fullscreen-slider__right_hide');
+            return
+        }
+
+        right.classList.remove('fullscreen-slider__right_hide')
+    }
+
+    const checkControls = () => {
+        checkLeftArrow();
+        checkRightArrow()
+    }
+
+    window.addEventListener('DOMContentLoaded', checkControls)
+    content.addEventListener('scroll', checkControls)
+
+    left.addEventListener('click', () => {
+        content.scrollTo({
+            top: 0,
+            left: content.scrollLeft - content.offsetWidth,
+            behavior: "smooth",
+          });
+    })
+
+    right.addEventListener('click', () => {
+        content.scrollTo({
+            top: 0,
+            left: content.scrollLeft + content.offsetWidth,
+            behavior: "smooth",
+          });
+    })
+})
 Array.from(document.querySelectorAll('.image-slider')).forEach(imageSlider => {
     const   left = imageSlider.querySelector('.image-slider__left'),
             right = imageSlider.querySelector('.image-slider__right'),
