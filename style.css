@@ -993,6 +993,7 @@ ol,
     scroll-snap-type: x mandatory;
     -ms-overflow-style: none;
     scrollbar-width: none; 
+    align-items: stretch;
 }
 .fullscreen-slider__content::-webkit-scrollbar {
     display: none;  /* Safari and Chrome browsers */
@@ -1004,6 +1005,9 @@ ol,
     width: 100%;
     padding-inline: calc((100vw - 100%) / 2);
     scroll-snap-align: start;
+    display: flex;
+    flex-shrink: 0;
+    align-items: stretch;
 }
 
 
@@ -1317,6 +1321,13 @@ ol,
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.image__wrapper {
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* 
