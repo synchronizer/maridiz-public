@@ -918,6 +918,12 @@ Array.from(document.querySelectorAll('.fullscreen-slider')).forEach(fullscreenSl
             behavior: "smooth",
           });
     })
+
+
+    fullscreenSlider.addEventListener('keydown', e => {
+        if (e.code === 'ArrowRight') right.click();
+        if (e.code === 'ArrowLeft') left.click();
+    })
 })
 Array.from(document.querySelectorAll('.image-slider')).forEach(imageSlider => {
     const   left = imageSlider.querySelector('.image-slider__left'),
