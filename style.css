@@ -1552,7 +1552,7 @@ html {
 
 
 :root {
-  font-size: clamp(16px, 1.2vw, 20px);
+  font-size: clamp(16px, 1.2vw, 18px);
 }
 
 .plan {
@@ -2179,7 +2179,7 @@ ol.list_no-marker {
 
 
 .title {
-    margin-top: 2em;
+    margin-top: 3em;
     margin-bottom: var(--line-height-text);
     text-wrap: balance;
     font-family: var(--font-family-title);
