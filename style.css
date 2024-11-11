@@ -1968,31 +1968,6 @@ html {
 }
 
 
-.svg-drawing {
-    width: 50%;
-    height: 100%;
-}
-
-.svg-drawing path {
-    fill: transparent;
-    stroke: white;
-    stroke-width: .1;
-    stroke-dasharray: 54;
-    animation: svg-drawing 2.5s ease-out both;
-}
-
-@keyframes svg-drawing {
-    from {
-      stroke-dashoffset: 54;
-    }
-    80% {
-      fill: transparent;
-    }
-    to {
-      stroke-dashoffset: 0;
-      fill: white;
-    }
-  }
 .timeline {
   --__timeline-color: var(--button-bg);
   --__timeline-items-gap: 3rem;
