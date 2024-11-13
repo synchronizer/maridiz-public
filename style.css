@@ -1502,7 +1502,7 @@ ol,
 .modal__content {
     padding: 1.5rem;
     background: var(--page-bg);
-    background: light-dark(var(--page-bg), var(--black-bg));
+    /* background: light-dark(var(--page-bg), var(--black-bg)); */
     cursor: auto;
 }
 
