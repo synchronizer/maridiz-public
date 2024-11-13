@@ -90,6 +90,23 @@
 
     --plan-bg: linear-gradient(to top right, #000, #777);
 }
+#sofa-content,
+#chair-content,
+#bed-content {
+    display: none;
+}
+
+body:has(#chair-button:checked) #chair-content {
+    display: block;
+}
+
+body:has(#sofa-button:checked) #sofa-content {
+    display: block;
+}
+
+body:has(#bed-button:checked) #bed-content {
+    display: block;
+}
 .rounded-s {
     border-radius: var(--bd-radius-S);
 }
