@@ -1062,17 +1062,21 @@ Array.from(document.querySelectorAll('.slider')).forEach(slider => {
 //     document.activeElement.click()
 // })
 Array.from(document.querySelectorAll('.check-button')).forEach(checkButton => {
-    checkButton.addEventListener('click', () => {
-        checkButton.classList.toggle('check-button_checked')
-    })
-    const updateCounter = () => {
-        if (!checkButton.getAttribute('data-counter')) return;
-        checkButton.querySelector('.button').setAttribute('data-counter', checkButton.getAttribute('data-counter'))
-    }
 
-    updateCounter()
+    const checkButton__checkbox = checkButton.querySelector('.check-button__checkbox');
 
-    checkButton.addEventListener('change', updateCounter)
+        checkButton.addEventListener('click', () => {
+            checkButton__checkbox.click();
+        })
+
+    // const updateCounter = () => {
+    //     if (!checkButton.getAttribute('data-counter')) return;
+    //     checkButton.querySelector('.button').setAttribute('data-counter', checkButton.getAttribute('data-counter'))
+    // }
+
+    // updateCounter()
+
+    // checkButton.addEventListener('change', updateCounter)
 })
 Array.from(document.querySelectorAll('.input')).forEach(item => {
     const input = item.querySelector('.input__input');

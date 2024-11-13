@@ -1,12 +1,13 @@
 
 :root {
+    --page-bg: #fff;
     --page-bg: light-dark(#fff, hsl(0deg 0% 7%));
+    --grey-bg: hsl(240deg 15% 94%);
     --grey-bg: light-dark(hsl(240deg 15% 94%), hsl(240deg 8% 18%));
     --black-bg: hsl(0deg 0% 14%);
     --button-bg: hsla(240, 13%, 60%, 0.3);
     --button_appearance_dark-bg: hsla(0, 0%, 0%, 0.75);
     --input-bg: hsl(240deg 13% 100% / 0.25);
-    /* --button-label-color: light-dark(#000, #fff); */
     --light-text-color: hsl(240deg 5% 40% / 80%);
     --border-color: hsl(240deg 5% 50% / 70%);
 
@@ -14,8 +15,10 @@
     --grey-border: hsla(240, 6%, 57%, 0.7);
 
     --backdrop: #0009;
-
+    
+    --color-link: hsl(220deg 100% 50%);
     --color-link: light-dark(hsl(220deg 100% 50%), hsl(220deg 100% 75%));
+    --color-link-visited: hsl(270deg 100% 50%);
     --color-link-visited: light-dark(hsl(270deg 100% 50%), hsl(270deg 100% 75%));
 
     --code-color: #F60;
@@ -1498,6 +1501,7 @@ ol,
 
 .modal__content {
     padding: 1.5rem;
+    background: var(--page-bg);
     background: light-dark(var(--page-bg), var(--black-bg));
     cursor: auto;
 }
@@ -1969,6 +1973,8 @@ html {
 
 
 .svg-drawing {
+  --__dash-length: 54;
+  --__stroke-width: .1;
     width: 50%;
     height: 100%;
 }
@@ -1976,14 +1982,14 @@ html {
 .svg-drawing path {
     fill: transparent;
     stroke: white;
-    stroke-width: .1;
-    stroke-dasharray: 54;
+    stroke-width: var(--__stroke-width);
+    stroke-dasharray: var(--__dash-length);
     animation: svg-drawing 2.5s ease-out both;
 }
 
 @keyframes svg-drawing {
     from {
-      stroke-dashoffset: 54;
+      stroke-dashoffset: var(--__dash-length);
     }
     80% {
       fill: transparent;
@@ -2267,9 +2273,10 @@ a.button {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  isolation: isolate;
 }
 
-.button[data-counter]:not(.button[data-counter="0"]) {
+/* .button[data-counter]:not(.button[data-counter="0"]) {
   position: relative;
 }
 
@@ -2291,7 +2298,7 @@ a.button {
   font-weight: 600;
   box-sizing: border-box;
   font-family: monospace;
-}
+} */
 
 .button_appearance_dark {
   background: var(--button_appearance_dark-bg);
@@ -2405,7 +2412,10 @@ a.button {
   padding: 0;
   height: max-content;
   background: none;
+}
 
+.button__check-wrapper {
+  display: inline-flex;
 }
 
 @keyframes buttonLoad {
@@ -2419,7 +2429,27 @@ a.button {
 }
 .check-button {
     position: relative;
+    display: inline-flex;
     isolation: isolate;
+}
+
+.check-button__checkbox {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: 0;
+}
+
+.check-button__checkbox:checked + .button::after {
+    --__inset: .25rem;
+    content: '';
+    position: absolute;
+    inset: var(--__inset);
+    border-radius: calc(var(--bd-radius-S) - (var(--__inset) / 2));
+    background: currentColor;
+    filter: brightness(.96) invert(1);
+    z-index: -1;
+    box-shadow: 0 calc(var(--__inset) / 2) var(--__inset) hsla(0, 0%, 100%, 0.25);
 }
 
 .check-button__check {
@@ -2474,6 +2504,16 @@ a.button {
 
 .input:has(.input__input[disabled]) {
   opacity: .5;
+}
+.radio-button {
+    display: inline-flex;
+    /* padding: calc((var(--control-size-L) - var(--control-size-M)) / 2); */
+    background-color: var(--button-bg);
+    border-radius: var(--bd-radius-S);
+}
+
+.radio-button .button {
+    background-color: transparent;
 }
 
 .select {
