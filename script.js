@@ -859,23 +859,112 @@ Array.from(document.querySelectorAll('.example')).forEach(example => {
         example__htmlSrc.value = reset;
     })
 })
+
+
+Array.from(document.querySelectorAll('.fullscreen-gallery__dialog')).forEach(fullscreenGalleryDialog => {
+    const fullscreenGalleryDialog__close = fullscreenGalleryDialog.querySelector('.fullscreen-gallery__close'),
+        fullscreenGalleryDialog__items = fullscreenGalleryDialog.querySelectorAll('.fullscreen-gallery__item'),
+        fullscreenGalleryDialog__img = fullscreenGalleryDialog.querySelector('.fullscreen-gallery__img');
+
+
+    fullscreenGalleryDialog__close.addEventListener('click', () => { fullscreenGalleryDialog.close() })
+
+    Array
+    .from(fullscreenGalleryDialog__items)
+    .forEach(fullscreenGalleryDialog__item => {
+        fullscreenGalleryDialog__item.addEventListener('click', () => { fullscreenGalleryDialog.close() })
+
+        fullscreenGalleryDialog__item.querySelector('.fullscreen-gallery__img').addEventListener('click', e => {
+            e.stopPropagation();
+        })
+    })
+
+
+
+})
+
+
+Array.from(document.querySelectorAll('.fullscreen-gallery__dialog')).forEach(fullscreenGalleryDialog => {
+    const left = fullscreenGalleryDialog.querySelector('.fullscreen-gallery__left'),
+            right = fullscreenGalleryDialog.querySelector('.fullscreen-gallery__right');
+
+    left.addEventListener('click', () => {
+        fullscreenGalleryDialog.scrollTo({
+            left: fullscreenGalleryDialog.scrollLeft - fullscreenGalleryDialog.offsetWidth,
+            // behavior: "smooth",
+        });
+    })
+
+    right.addEventListener('click', () => {
+        fullscreenGalleryDialog.scrollTo({
+            left: fullscreenGalleryDialog.scrollLeft + fullscreenGalleryDialog.offsetWidth,
+            // behavior: "smooth",
+        });
+    })
+
+    fullscreenGalleryDialog.addEventListener('keydown', e => {
+        if (e.code === 'ArrowRight') right.click();
+        if (e.code === 'ArrowLeft') left.click();
+    })
+
+    const checkLeftArrow = () => {
+
+        if (fullscreenGalleryDialog.scrollLeft + fullscreenGalleryDialog.offsetLeft <= 1) {
+            left.classList.add('fullscreen-gallery__left_hide');
+            return
+        }
+
+        left.classList.remove('fullscreen-gallery__left_hide')
+    }
+
+    const checkRightArrow = () => {
+
+        if (fullscreenGalleryDialog.scrollWidth - fullscreenGalleryDialog.scrollLeft - fullscreenGalleryDialog.offsetWidth + fullscreenGalleryDialog.offsetLeft <= 1) {
+            right.classList.add('fullscreen-gallery__right_hide');
+            return
+        }
+
+        right.classList.remove('fullscreen-gallery__right_hide')
+    }
+
+    const checkControls = () => {
+        checkLeftArrow();
+        checkRightArrow()
+    }
+
+    window.addEventListener('DOMContentLoaded', checkControls)
+    fullscreenGalleryDialog.addEventListener('scroll', checkControls)
+
+})
+
+
+
+Array
+.from(document.querySelectorAll('.fullscreen-gallery'))
+.forEach(fullscreenGallery => {
+    const fullscreenGallery__dialog = fullscreenGallery.querySelector('.fullscreen-gallery__dialog');
+
+    Array
+    .from(fullscreenGallery.querySelectorAll('.fullscreen-gallery__preview img'))
+    .forEach((fullscreenGallery__itemPreview, key) => {
+        console.log('f');
+        
+        fullscreenGallery__itemPreview.addEventListener('click', () => {
+            fullscreenGallery__dialog.showModal()
+            fullscreenGallery__dialog.scrollTo({
+                left: fullscreenGallery__dialog.offsetWidth * key,
+            });
+        })
+    })
+})
 Array.from(document.querySelectorAll('.fullscreen-slider')).forEach(fullscreenSlider => {
-    const   left = fullscreenSlider.querySelector('.fullscreen-slider__left'),
-            right = fullscreenSlider.querySelector('.fullscreen-slider__right'),
-            content = fullscreenSlider.querySelector('.fullscreen-slider__content');
+    const left = fullscreenSlider.querySelector('.fullscreen-slider__left'),
+        right = fullscreenSlider.querySelector('.fullscreen-slider__right'),
+        content = fullscreenSlider.querySelector('.fullscreen-slider__content');
 
 
     const checkLeftArrow = () => {
-        console.log(
-            'content.scrollLeft: ' + content.scrollLeft,
-            'content.scrollWidth: ' + content.scrollWidth,
-            'content.offsetWidth: ' + content.offsetWidth,
-            'content.offsetLeft: ' + content.offsetLeft,
-            'content.clientWidth: ' + content.clientWidth,
-        );
-        console.dir(content);
-        
-        
+
         if (content.scrollLeft + content.offsetLeft <= 1) {
             left.classList.add('fullscreen-slider__left_hide');
             return
@@ -886,7 +975,7 @@ Array.from(document.querySelectorAll('.fullscreen-slider')).forEach(fullscreenSl
 
     const checkRightArrow = () => {
         console.log(content.scrollWidth - content.scrollLeft - content.offsetWidth + content.offsetLeft);
-        
+
         if (content.scrollWidth - content.scrollLeft - content.offsetWidth + content.offsetLeft <= 1) {
             right.classList.add('fullscreen-slider__right_hide');
             return
@@ -908,7 +997,7 @@ Array.from(document.querySelectorAll('.fullscreen-slider')).forEach(fullscreenSl
             top: 0,
             left: content.scrollLeft - content.offsetWidth,
             behavior: "smooth",
-          });
+        });
     })
 
     right.addEventListener('click', () => {
@@ -916,7 +1005,7 @@ Array.from(document.querySelectorAll('.fullscreen-slider')).forEach(fullscreenSl
             top: 0,
             left: content.scrollLeft + content.offsetWidth,
             behavior: "smooth",
-          });
+        });
     })
 
 
