@@ -705,6 +705,13 @@ ol,
     pointer-events: none;
   }
 
+  @media (hover: hover) {
+    .carousel__left,
+    .carousel__right {
+      display: none;
+    }
+  }
+
   
   
 
