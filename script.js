@@ -860,21 +860,39 @@ Array.from(document.querySelectorAll('.example')).forEach(example => {
     })
 })
 
+Array.from(document.querySelectorAll('.fullscreen-gallery')).forEach(fullscreenGallery => {
+    const fullscreenGallery__close = fullscreenGallery.querySelector('.fullscreen-gallery__close'),
+        fullscreenGallery__items = fullscreenGallery.querySelectorAll('.fullscreen-gallery__item');
 
-Array.from(document.querySelectorAll('.fullscreen-gallery__dialog')).forEach(fullscreenGalleryDialog => {
-    const fullscreenGalleryDialog__close = fullscreenGalleryDialog.querySelector('.fullscreen-gallery__close'),
-        fullscreenGalleryDialog__items = fullscreenGalleryDialog.querySelectorAll('.fullscreen-gallery__item'),
-        fullscreenGalleryDialog__img = fullscreenGalleryDialog.querySelector('.fullscreen-gallery__img');
+    fullscreenGallery.addEventListener('cancel', () => {
+        
+        const previewElement = document
+        .querySelectorAll(`
+            [data-fullscreen-gallery="${
+                fullscreenGallery
+                .getAttribute('id')
+            }"]
+            `)[Math.round(fullscreenGallery.scrollLeft / fullscreenGallery.offsetWidth)];
 
+        previewElement.scrollIntoView({
+            'behavior': 'auto',
+            'block': 'center',
+            'inline': 'center'
+        });
 
-    fullscreenGalleryDialog__close.addEventListener('click', () => { fullscreenGalleryDialog.close() })
+        previewElement.classList.add('fullscreen-gallery__preview-element-afrer-close');
+        setTimeout(() => {
+            previewElement.classList.remove('fullscreen-gallery__preview-element-afrer-close');
+        }, 3000)        
+    })
+    fullscreenGallery__close.addEventListener('click', () => { fullscreenGallery.close() })
 
     Array
-    .from(fullscreenGalleryDialog__items)
-    .forEach(fullscreenGalleryDialog__item => {
-        fullscreenGalleryDialog__item.addEventListener('click', () => { fullscreenGalleryDialog.close() })
+    .from(fullscreenGallery__items)
+    .forEach(fullscreenGallery__item => {
+        fullscreenGallery__item.addEventListener('click', () => { fullscreenGallery.close() })
 
-        fullscreenGalleryDialog__item.querySelector('.fullscreen-gallery__img').addEventListener('click', e => {
+        fullscreenGallery__item.querySelector('.fullscreen-gallery__item > *').addEventListener('click', e => {
             e.stopPropagation();
         })
     })
@@ -884,32 +902,32 @@ Array.from(document.querySelectorAll('.fullscreen-gallery__dialog')).forEach(ful
 })
 
 
-Array.from(document.querySelectorAll('.fullscreen-gallery__dialog')).forEach(fullscreenGalleryDialog => {
-    const left = fullscreenGalleryDialog.querySelector('.fullscreen-gallery__left'),
-            right = fullscreenGalleryDialog.querySelector('.fullscreen-gallery__right');
+Array.from(document.querySelectorAll('.fullscreen-gallery')).forEach(fullscreenGallery => {
+    const left = fullscreenGallery.querySelector('.fullscreen-gallery__left'),
+        right = fullscreenGallery.querySelector('.fullscreen-gallery__right');
 
     left.addEventListener('click', () => {
-        fullscreenGalleryDialog.scrollTo({
-            left: fullscreenGalleryDialog.scrollLeft - fullscreenGalleryDialog.offsetWidth,
+        fullscreenGallery.scrollTo({
+            left: fullscreenGallery.scrollLeft - fullscreenGallery.offsetWidth,
             // behavior: "smooth",
         });
     })
 
     right.addEventListener('click', () => {
-        fullscreenGalleryDialog.scrollTo({
-            left: fullscreenGalleryDialog.scrollLeft + fullscreenGalleryDialog.offsetWidth,
+        fullscreenGallery.scrollTo({
+            left: fullscreenGallery.scrollLeft + fullscreenGallery.offsetWidth,
             // behavior: "smooth",
         });
     })
 
-    fullscreenGalleryDialog.addEventListener('keydown', e => {
+    fullscreenGallery.addEventListener('keydown', e => {
         if (e.code === 'ArrowRight') right.click();
         if (e.code === 'ArrowLeft') left.click();
     })
 
     const checkLeftArrow = () => {
 
-        if (fullscreenGalleryDialog.scrollLeft + fullscreenGalleryDialog.offsetLeft <= 1) {
+        if (fullscreenGallery.scrollLeft + fullscreenGallery.offsetLeft <= 1) {
             left.classList.add('fullscreen-gallery__left_hide');
             return
         }
@@ -919,7 +937,7 @@ Array.from(document.querySelectorAll('.fullscreen-gallery__dialog')).forEach(ful
 
     const checkRightArrow = () => {
 
-        if (fullscreenGalleryDialog.scrollWidth - fullscreenGalleryDialog.scrollLeft - fullscreenGalleryDialog.offsetWidth + fullscreenGalleryDialog.offsetLeft <= 1) {
+        if (fullscreenGallery.scrollWidth - fullscreenGallery.scrollLeft - fullscreenGallery.offsetWidth + fullscreenGallery.offsetLeft <= 1) {
             right.classList.add('fullscreen-gallery__right_hide');
             return
         }
@@ -933,30 +951,25 @@ Array.from(document.querySelectorAll('.fullscreen-gallery__dialog')).forEach(ful
     }
 
     window.addEventListener('DOMContentLoaded', checkControls)
-    fullscreenGalleryDialog.addEventListener('scroll', checkControls)
-
-})
+    fullscreenGallery.addEventListener('scroll', checkControls)
 
 
-
-Array
-.from(document.querySelectorAll('.fullscreen-gallery'))
-.forEach(fullscreenGallery => {
-    const fullscreenGallery__dialog = fullscreenGallery.querySelector('.fullscreen-gallery__dialog');
-
+    const id = fullscreenGallery.getAttribute('id');
+    const triggersList = document.querySelectorAll(`[data-fullscreen-gallery="${id}"]`);
     Array
-    .from(fullscreenGallery.querySelectorAll('.fullscreen-gallery__preview img'))
-    .forEach((fullscreenGallery__itemPreview, key) => {
-        console.log('f');
-        
-        fullscreenGallery__itemPreview.addEventListener('click', () => {
-            fullscreenGallery__dialog.showModal()
-            fullscreenGallery__dialog.scrollTo({
-                left: fullscreenGallery__dialog.offsetWidth * key,
-            });
+        .from(triggersList)
+        .forEach((trigger, key) => {
+            trigger.addEventListener('click', () => {
+                fullscreenGallery.showModal()
+                fullscreenGallery.scrollTo({
+                    left: fullscreenGallery.offsetWidth * key,
+                });
+                checkControls();
+            })
         })
-    })
+
 })
+
 Array.from(document.querySelectorAll('.fullscreen-slider')).forEach(fullscreenSlider => {
     const left = fullscreenSlider.querySelector('.fullscreen-slider__left'),
         right = fullscreenSlider.querySelector('.fullscreen-slider__right'),
