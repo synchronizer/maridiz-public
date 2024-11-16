@@ -1101,7 +1101,7 @@ ol,
 }
 
 .fullscreen-gallery__preview-element-afrer-close {
-  animation: preview-element-afrer-close both 1.5s;
+  /* animation: preview-element-afrer-close both 1.5s; */
 }
 
 @keyframes preview-element-afrer-close {
