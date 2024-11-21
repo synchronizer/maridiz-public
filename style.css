@@ -1,9 +1,9 @@
 
 :root {
     --page-bg: #fff;
-    --page-bg: light-dark(#fff, hsl(0deg 0% 7%));
+    /* --page-bg: light-dark(#fff, hsl(0deg 0% 7%)); */
     --grey-bg: hsl(240deg 15% 94%);
-    --grey-bg: light-dark(hsl(240deg 15% 94%), hsl(240deg 8% 18%));
+    /* --grey-bg: light-dark(hsl(240deg 15% 94%), hsl(240deg 8% 18%)); */
     --black-bg: hsl(0deg 0% 14%);
     --button-bg: hsla(240, 13%, 60%, 0.3);
     --button_appearance_dark-bg: hsla(0, 0%, 0%, 0.75);
@@ -622,39 +622,6 @@ ol,
 .call-request__send {
     align-self: start;
 }
-
-.card {
-  background-color: var(--grey-bg);
-  padding-inline: 1rem;
-  padding-block: 1.5rem;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.card_center {
-  text-align: center;
-}
-
-.card_whitetext {
-  color: #fff;
-}
-
-.card_size_m {
-  width: var(--card-width-m);
-}
-
-.card_size_l {
-  width: var(--card-width-l);
-}
-
-.card_size_xl {
-  width: var(--card-width-xl);
-}
-
 .carousel {
   display: flex;
   justify-content: center;
@@ -670,6 +637,10 @@ ol,
   display: flex;
   overflow-x: scroll;
   gap: 1rem;
+
+  /* For focus-outline */
+  margin-block: -4px;
+  padding-block: 4px;
 }
 
 .carousel__content>* {
@@ -1453,42 +1424,6 @@ ol,
     display: none;
     pointer-events: none;
   }
-
-.image__img {
-  display: block;
-  object-fit: cover;
-  max-height: inherit;
-}
-
-
-.image__img:not([width]) {
-  max-width: 100%;
-}
-
-.image__caption {
-  margin-top: 0em;
-  /* color: var(--grey-S); */
-  font-size: var(--font-size-caption);
-}
-
-.image__preview {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.image__wrapper {
-  overflow: hidden;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  max-height: inherit;
-}
-
-/* 
-.image_rounded .image__img{
-  border-radius: var(--bd-radius-M);
-} */
 .inset {
   position: relative;
   padding: 1.5rem;
@@ -1681,7 +1616,7 @@ ol,
 
 html {
   scroll-behavior: smooth;
-  background-color: var(--page-bg);
+  /* background-color: var(--page-bg); */
 }
 
 .body {
@@ -1987,7 +1922,7 @@ html {
 .slider__teaser_active .slider__teaser-bg {
   transform: scale(1.05);
   /* border-radius: var(--bd-radius-S); */
-  background: var(--body-bg);
+  background: var(--page-bg);
   box-shadow: var(--shadow);
 }
 
@@ -2736,4 +2671,38 @@ a.button {
 
 .textarea:has(.textarea__textarea[disabled]) {
   opacity: .5;
+}
+
+.image {
+  display: block;
+  object-fit: cover;
+}
+
+
+.image:not([width]) {
+  max-width: 100%;
+}
+
+.image__caption {
+  margin-top: 0em;
+  /* color: var(--grey-S); */
+  font-size: var(--font-size-caption);
+}
+
+.image__preview {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image__wrapper {
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  max-height: inherit;
+
+  /* For focus-outline */
+  margin: -4px;
+  padding: 4px;
 }
