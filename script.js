@@ -864,38 +864,43 @@ Array.from(document.querySelectorAll('.fullscreen-gallery')).forEach(fullscreenG
     const fullscreenGallery__close = fullscreenGallery.querySelector('.fullscreen-gallery__close'),
         fullscreenGallery__items = fullscreenGallery.querySelectorAll('.fullscreen-gallery__item');
 
-    fullscreenGallery.addEventListener('cancel', () => {
-        
+    const showPreviev = () => {
         const previewElement = document
-        .querySelectorAll(`
-            [data-fullscreen-gallery="${
-                fullscreenGallery
-                .getAttribute('id')
-            }"]
+            .querySelectorAll(`
+            [data-fullscreen-gallery="${fullscreenGallery
+                    .getAttribute('id')
+                }"]
             `)[Math.round(fullscreenGallery.scrollLeft / fullscreenGallery.offsetWidth)];
+        if (!previewElement) return;
 
-        previewElement.scrollIntoView({
-            'behavior': 'auto',
-            'block': 'center',
-            'inline': 'center'
-        });
 
-        previewElement.classList.add('fullscreen-gallery__preview-element-afrer-close');
+
         setTimeout(() => {
-            previewElement.classList.remove('fullscreen-gallery__preview-element-afrer-close');
-        }, 3000)        
+            previewElement.focus({ focusVisible: true })
+        }, 1)
+
+
+    }
+
+    fullscreenGallery.addEventListener('cancel', showPreviev)
+    
+    fullscreenGallery__close.addEventListener('click', () => {
+        showPreviev()
+        fullscreenGallery.close()
     })
-    fullscreenGallery__close.addEventListener('click', () => { fullscreenGallery.close() })
 
     Array
-    .from(fullscreenGallery__items)
-    .forEach(fullscreenGallery__item => {
-        fullscreenGallery__item.addEventListener('click', () => { fullscreenGallery.close() })
+        .from(fullscreenGallery__items)
+        .forEach(fullscreenGallery__item => {
+            fullscreenGallery__item.addEventListener('click', () => {
+                showPreviev()
+                fullscreenGallery.close()
+            })
 
-        fullscreenGallery__item.querySelector('.fullscreen-gallery__item > *').addEventListener('click', e => {
-            e.stopPropagation();
+            fullscreenGallery__item.querySelector('.fullscreen-gallery__item > *').addEventListener('click', e => {
+                e.stopPropagation();
+            })
         })
-    })
 
 
 
