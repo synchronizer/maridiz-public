@@ -25,7 +25,7 @@
 
 
 
-    --attractive-bg: linear-gradient(to right top, hsl(140deg 100% 55%) 0%, hsl(180deg 100% 55%) 100%);
+    --attractive-bg: #6A00FF;
 
     --animation-duration: .5s;
     --animation-duration-m: .5s;
@@ -414,37 +414,34 @@ body:has(#bed-button:checked) #bed-content {
 
 @keyframes from-bottom {
     from {
-        /* opacity: 0; */
+        opacity: 0;
         translate: 0 7.5rem;
     }
 
-    to {
-        /* opacity: 1; */
-        translate: 0 0;
+    33%{
+        opacity: 1;
     }
 }
 
 @keyframes from-right {
     from {
-        /* opacity: 0; */
-        translate: 10vw 5vw;
+        opacity: 0;
+        translate: 5vw 2.5vw;
     }
 
-    to {
-        /* opacity: 1; */
-        translate: 0;
+    33%{
+        opacity: 1;
     }
 }
 
 @keyframes from-left {
     from {
-        /* opacity: 0; */
-        translate: -10vw 5vw;
+        opacity: 0;
+        translate: -5vw 2.5vw;
     }
 
-    to {
-        /* opacity: 1; */
-        translate: 0;
+    33%{
+        opacity: 1;
     }
 }
 
@@ -1022,7 +1019,7 @@ p {
 }
 
 .features__icon {
-    color: blue;
+    color: #6A00FF;
     position: relative;
     width: 4.5rem;
     height: 4.5rem;
@@ -1874,6 +1871,9 @@ html {
     padding-block: 3rem;
 }
 
+.section_color_page {
+   background: var(--page-bg); 
+}
 .section_color_gray {
     background: var(--grey-bg);
 }
@@ -2539,7 +2539,7 @@ a.button {
 .button_action,
 .button_appearance_action {
   background: var(--attractive-bg);
-  color: #000;
+  color: #fff;
 }
 
 .button_black {
