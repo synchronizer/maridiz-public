@@ -108,28 +108,23 @@ body:has(#bed-button:checked) #bed-content {
     display: block;
 }
 .partner-company__banner {
-    background-image: linear-gradient(to right, #000, hsl(265deg 100% 40%));
     border-radius: var(--bd-radius-L);
-    padding: 1.5rem 18rem 1.5rem 1.5rem;
-    font-size: 1.5rem;
-    line-height: 1.25;
-    margin-bottom: 3rem;
-    position: relative;
     overflow: hidden;
-    text-wrap: pretty;
-}
-
-.partner-company__banner-text {
-    color: #fff;
-    font-weight: 100;
+    margin-bottom: 1.5rem;
+    position: relative;
 }
 
 .partner-company__banner-img {
-    position: absolute;
-    right: 1.5rem;
-    top: -.5rem;
-    width: 12rem;
+    width: 100%;
+    display: block;
 }
+
+.partner-company__banner-close {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+}
+
 .partner-company {
     margin-inline: auto;
 }
@@ -270,7 +265,7 @@ body:has(#bed-button:checked) #bed-content {
   
    .partner-company__meta {
     position: sticky;
-    top: 4.5rem;
+    top: 1.5rem;
     align-self: flex-start;
      grid-row: 1 / 4;
      grid-column: 2 / 3;
