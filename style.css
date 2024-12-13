@@ -247,7 +247,7 @@ body:has(#bed-button:checked) #bed-content {
 
 @media (min-width: 65rem) {
   .partner-company {
-    width: min(58.5rem, 100% - 2rem  );
+    width: min(60rem, 100% - 2rem  );
       margin-top: 6rem;
   }
   .partner-company__main {
@@ -320,7 +320,6 @@ body:has(#bed-button:checked) #bed-content {
         display: flex;
         flex-wrap: wrap;
         gap:.25rem;
-        border-radius: 1rem;
         overflow: hidden;
 
 }
@@ -2805,8 +2804,12 @@ a.button {
 }
 .check-button {
     position: relative;
-    display: inline-flex;
+    display: inline-block;
     isolation: isolate;
+}
+
+.check-button_fullwidth {
+    display: block;
 }
 
 .check-button__checkbox {
@@ -2886,6 +2889,14 @@ a.button {
     /* padding: calc((var(--control-size-L) - var(--control-size-M)) / 2); */
     background-color: var(--button-bg);
     border-radius: var(--bd-radius-S);
+}
+
+.radio-button_fullwidth {
+    display: flex;
+}
+
+.radio-button_fullwidth > * {
+    flex-grow: 1;
 }
 
 .radio-button .button {
