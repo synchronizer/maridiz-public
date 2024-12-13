@@ -2,7 +2,7 @@
 :root {
     --page-bg: #fff;
     /* --page-bg: light-dark(#fff, hsl(0deg 0% 7%)); */
-    --grey-bg: hsl(240deg 15% 94%);
+    --grey-bg: hsl(240deg 15% 95%);
     /* --grey-bg: light-dark(hsl(240deg 15% 94%), hsl(240deg 8% 18%)); */
     --black-bg: hsl(0deg 0% 14%);
     --button-bg: hsla(240, 13%, 60%, 0.3);
@@ -107,16 +107,44 @@ body:has(#sofa-button:checked) #sofa-content {
 body:has(#bed-button:checked) #bed-content {
     display: block;
 }
+.partner-company__banner {
+    background-image: linear-gradient(to right, #000, hsl(265deg 100% 40%));
+    border-radius: var(--bd-radius-L);
+    padding: 1.5rem 18rem 1.5rem 1.5rem;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+    text-wrap: pretty;
+}
+
+.partner-company__banner-text {
+    color: #fff;
+    font-weight: 100;
+}
+
+.partner-company__banner-img {
+    position: absolute;
+    right: 1.5rem;
+    top: -.5rem;
+    width: 12rem;
+}
 .partner-company {
-  display: grid;
-  row-gap: 2rem;
-  column-gap: 2rem;
-  margin-inline: auto;
+    margin-inline: auto;
 }
 
 
 
 .partner-company__main {
+  display: grid;
+  row-gap: 2rem;
+  column-gap: 2rem;
+}
+
+
+
+.partner-company__info {
   display: flex;
   flex-direction: column;
   gap:2rem;
@@ -159,8 +187,8 @@ body:has(#bed-button:checked) #bed-content {
   position: absolute;
   width: 6rem;
   height: 6rem;
-  bottom: .5rem;
-  left: .5rem;
+  bottom: 1rem;
+  left: 1rem;
   border-radius: .5rem;
   object-fit: cover;
 }
@@ -214,7 +242,7 @@ body:has(#bed-button:checked) #bed-content {
 @media (max-width: 65rem) {
   .partner-company {
     width: min(38rem, 100% - 2rem  );
-      margin-top: 3rem;
+    margin-top: 3rem;
 
   }
   .partner-company__title {
@@ -229,8 +257,10 @@ body:has(#bed-button:checked) #bed-content {
 @media (min-width: 65rem) {
   .partner-company {
     width: min(58.5rem, 100% - 2rem  );
-    grid-template-columns: 2fr 1fr;
       margin-top: 6rem;
+  }
+  .partner-company__main {
+    grid-template-columns: 2fr 1fr;
   }
   
   .partner-company__head {
@@ -241,16 +271,24 @@ body:has(#bed-button:checked) #bed-content {
    .partner-company__meta {
     position: sticky;
     top: 4.5rem;
-    align-self: start;
-     grid-row: 2 / 5;
+    align-self: flex-start;
+     grid-row: 1 / 4;
      grid-column: 2 / 3;
-     padding: 1.5rem;
+     padding: 1.25rem;
      background-color: var(--grey-bg);
      border-radius: 1.5rem;
      margin-bottom: 2rem;
+     font-size: 0.9rem;
+     line-height: 1.5;
   }
+
+  .partner-company__meta-group {
+    gap: .9rem;
+  }
+
+  
   .partner-company__title {
-    font-size: 2.4rem;
+    font-size: 2.25rem;
     text-wrap: balance;
   }
   .partner-company__cover {
