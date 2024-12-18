@@ -1077,6 +1077,12 @@ Array.from(document.querySelectorAll('.image-slider')).forEach(imageSlider => {
 
     
     content.addEventListener('scroll', checkControls)
+    content.addEventListener('focus', () => {
+        console.log('focus');
+        setTimeout(checkControls, 50)
+        
+    })
+    
 
     left.addEventListener('click', () => {
         content.scrollTo({

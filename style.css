@@ -739,7 +739,7 @@ p {
   pointer-events: none;
 }
 
-@media (hover: none) {
+@media not (hover: hover) {
 
   .carousel__left,
   .carousel__right {
@@ -1175,6 +1175,13 @@ p {
   cursor: pointer;
 }
 
+@media not (hover: hover) {
+  .fullscreen-gallery__left,
+  .fullscreen-gallery__right {
+    display: none;
+  }
+}
+
 .fullscreen-slider {
     position: relative;
     /* margin-inline: calc((100% - 100vw) / 2);
@@ -1233,6 +1240,13 @@ p {
   .fullscreen-slider__right_hide {
     display: none;
     pointer-events: none;
+  }
+
+  @media not (hover: hover) {
+    .fullscreen-slider__left,
+    .fullscreen-slider__right {
+      display: none;
+    }
   }
 .gap {
   height: 1.5rem;
