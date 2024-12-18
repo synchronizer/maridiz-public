@@ -1074,6 +1074,7 @@ Array.from(document.querySelectorAll('.image-slider')).forEach(imageSlider => {
     }
 
     window.addEventListener('load', checkControls)
+
     
     content.addEventListener('scroll', checkControls)
 
