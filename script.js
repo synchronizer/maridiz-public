@@ -859,6 +859,27 @@ Array.from(document.querySelectorAll('.example')).forEach(example => {
         example__htmlSrc.value = reset;
     })
 })
+Array.from(document.querySelectorAll('.filterable-group'))
+.forEach(filterableGroup => {
+    
+  Array.from(filterableGroup.querySelectorAll('[data-filter]')).forEach(item =>{
+
+    
+  item.addEventListener('change', () => {
+    const filterName = item.getAttribute('data-filter')
+    
+    Array.from(filterableGroup.querySelectorAll(`[${filterName}]`)).forEach(filteredItem => {
+
+       if(item.value == "*" || filteredItem.getAttribute(`${filterName}`) == item.value) {
+        return filteredItem.classList.remove(`hidden_by_filter_${filterName}`)
+        
+      } 
+        filteredItem.classList.add(`hidden_by_filter_${filterName}`)
+      
+    })
+  })
+})
+})
 
 Array.from(document.querySelectorAll('.fullscreen-gallery')).forEach(fullscreenGallery => {
     const fullscreenGallery__close = fullscreenGallery.querySelector('.fullscreen-gallery__close'),
