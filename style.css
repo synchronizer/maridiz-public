@@ -74,6 +74,9 @@
     --card-width-xl: 45rem;
 
     --plan-bg: linear-gradient(to top right, #000, #777);
+
+    --partner-company-banner-bg: linear-gradient(to right, #0f100f ,#6003e3);
+    --partner-company-banner-text-color: #fff;
 }
 
 @supports (background-color: light-dark(white,black)) {
@@ -1492,6 +1495,9 @@ p {
 }
 
 .icon_custom-colors {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
     background-image: var(--icon-url);
 }
 .image-slider {
@@ -2308,11 +2314,11 @@ html {
 }
 
 .company-preview__banner {
-  background-image: linear-gradient(to right, #000, #333);
+  background: var(--partner-company-banner-bg);
   padding: 1.5rem;
   font-size: var(--font-size-subtitle);
   line-height: var(--line-height-subtitle);
-  color: #fff;
+  color: var(--partner-company-banner-text-color);
   margin: .5rem .5rem 0;
 }
 
@@ -2408,12 +2414,12 @@ html {
 .partner-company__banner {
   overflow: hidden;
   position: relative;
-  background-image: linear-gradient(to right, #000, #333);
+  background: var(--partner-company-banner-bg);
   padding: 3rem;
   font-size: var(--font-size-title);
   line-height: var(--line-height-title);
-  color: #fff;
-  padding-right: 20%;
+  color: var(--partner-company-banner-text-color);
+  /* padding-right: 20%; */
 }
 
 .partner-company__banner-image {
@@ -2621,7 +2627,6 @@ html {
   /* Safari and Chrome browsers */
 }
 
-.carousel__content {}
 
 .partner-company__tabs-button-wrapper {
   opacity: 0.5;
