@@ -1128,12 +1128,6 @@ document.addEventListener('keypress', e => {
     document.activeElement.click();
 })
 
-Array.from(document.querySelectorAll('.partner-company__banner'))
-.forEach(banner => {
-    const close = banner.querySelector('.partner-company__banner-close');
-
-    close.addEventListener('click', () => {banner.style.display = 'none'})
-})
 
 Array.from(document.querySelectorAll('.slider')).forEach(slider => {
     const time = parseFloat(slider.getAttribute('data-time')),
@@ -1192,6 +1186,12 @@ Array.from(document.querySelectorAll('.slider')).forEach(slider => {
 
     sliderPlay();
 
+})
+Array.from(document.querySelectorAll('.partner-company__banner'))
+.forEach(banner => {
+    const close = banner.querySelector('.partner-company__banner-close');
+
+    close.addEventListener('click', () => {banner.style.display = 'none'})
 })
 
 
