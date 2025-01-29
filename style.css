@@ -638,10 +638,8 @@ p {
   height: 100%;
 }
 
-
 .banner {
   aspect-ratio: 2/1;
-  min-height: 50vh;
   max-width: 100%;
   position: relative;
   display: flex;
@@ -653,6 +651,15 @@ p {
   background-repeat: no-repeat;
   background-position: center;
   color: #fff;
+  padding: 1.5rem;
+
+  container-type: inline-size;
+}
+
+@media (max-width: 720px) {
+  .banner {
+    min-height: 50vh;
+  }
 }
 
 .banner__content {
@@ -673,11 +680,23 @@ p {
   margin: 0;
 }
 
+
+
 .banner__text {
-  font-size: var(--font-size-text);
-  line-height: var(--line-height-text);
+  font-size: var(--font-size-subtitle);
+  line-height: 1.5;
   font-weight: var(--font-weight-text);
-  margin: 1em 0 2em;
+  margin: 1.5em 0 2em;
+  max-width: 60ch;
+}
+
+@container (width < 650px) {
+  .banner__title {
+    font-size: var(--font-size-title);
+  }
+  .banner__text {
+    font-size: var(--font-size-text);
+  }
 }
 
 .banner__image {
@@ -936,6 +955,7 @@ p {
 .columns__item {
   flex-basis: var(--content-width-s);
   flex-grow: 1;
+  max-width: 100%;
 }
 .creeping-line {
     color: #fff;
