@@ -2476,6 +2476,13 @@ html {
   text-wrap: balance;
 }
 
+.company-preview__text {
+  font-size: var(--font-size-text);
+  line-height: var(--line-height-text);
+  text-wrap: pretty;
+  margin-top: .75rem;
+}
+
 .company-preview__approved {
   position: absolute;
   right: 1.25rem;
