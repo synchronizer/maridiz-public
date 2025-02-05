@@ -2831,6 +2831,14 @@ html {
 .partner-company__similar:not(:has(.preview-company)) {
   display: none;
 }
+
+.partner-company__extended-tabs:not(:has(#products-tab)):not(:has(#service-tab)):not(:has(#photo-tab)):not(:has(#reviews-tab)) {
+  display: none;
+}
+
+.partner-company__meta:not(:has(*)) {
+  display: none;
+}
 .partner-company__banner {
     overflow: hidden;
     margin-bottom: 1.5rem;
