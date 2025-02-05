@@ -2827,6 +2827,10 @@ html {
 .horizontal-masonry>* {
   flex-grow: 1;
 }
+
+.partner-company__similar:not(:has(.preview-company)) {
+  display: none;
+}
 .partner-company__banner {
     overflow: hidden;
     margin-bottom: 1.5rem;
