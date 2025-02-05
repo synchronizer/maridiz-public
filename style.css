@@ -2828,7 +2828,7 @@ html {
   flex-grow: 1;
 }
 
-.partner-company__similar:not(:has(.preview-company)) {
+.partner-company__similar:not(:has(.company-preview)) {
   display: none;
 }
 
