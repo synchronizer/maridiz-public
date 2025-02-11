@@ -2623,6 +2623,7 @@ html {
 
 .partner-company__categories-item {
   background: var(--grey-bg);
+  color: CanvasText;
   padding-inline: .75rem;
   display: inline-flex;
   height: 1.5rem;
