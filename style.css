@@ -2440,6 +2440,28 @@ html {
 .companies-list > *:not(:first-child) {
     margin-top: .75rem;
 }
+.company-mini-preview {
+  background-color: var(--button-bg);
+  border-radius: var(--bd-radius-S);
+  display: flex;
+  align-items: center;
+  color: CanvasText;
+  text-decoration: none;
+  padding: 0.5rem;
+  gap: 0.5rem;
+}
+
+.company-mini-preview__logo {
+  display: block;
+  width: 2rem;
+  aspect-ratio: 1;
+  flex-shrink: 0;
+}
+
+.company-mini-preview__title {
+  font-size: var(--font-size-caption);
+  line-height: 1.25;
+}
 .company-preview {
   background-color: var(--grey-bg);
   overflow: hidden;
@@ -2994,10 +3016,7 @@ html {
     margin-top: -.5rem;
     aspect-ratio: 1;
     object-fit: contain;
-    background-color: #fff;
-    /* background-color: var(--grey-bg); */
     width: calc(100% + 1rem);
-    mix-blend-mode: darken;
 }
 
 
@@ -3021,6 +3040,27 @@ html {
 .product-preview__controls {
     margin-top: 1rem;
 }
+.products-list {
+    /* column-gap: 1.5rem; */
+    /* row-gap: 4.5rem; */
+    gap: 1rem;
+    display: grid;
+}
+
+
+
+@media (min-width: 24rem) {
+    .products-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 38rem) {
+    .products-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
 .caption {
   text-wrap: pretty;
   font-size: var(--font-size-caption);
