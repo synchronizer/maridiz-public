@@ -1091,11 +1091,11 @@ p {
 }
 [class*=hidden_by_filter_] {display: none;}
 .footer {
-    width: min(var(--content-width-m), 100% - 1.5rem);
-    margin-inline: auto;
-    margin-top: 6rem;
-    border-top: 1px solid var(--border-color);
-    padding-bottom: 3rem;
+       margin-top: 3rem;
+       padding-bottom: 3rem;
+       padding-inline: max((100% - var(--content-width-l)) / 2, 1.5rem);
+       background-color: var(--grey-bg);
+       padding-top: 3rem;
 }
 
 .footer>* {

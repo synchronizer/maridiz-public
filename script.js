@@ -1187,6 +1187,7 @@ Array.from(document.querySelectorAll('.slider')).forEach(slider => {
     sliderPlay();
 
 })
+document.querySelector('#products-tab, #services-tab, #photo-tab, #reviews-tab').checked = true
 Array.from(document.querySelectorAll('.partner-company__banner'))
 .forEach(banner => {
     const close = banner.querySelector('.partner-company__banner-close');
