@@ -5,7 +5,7 @@
     --button-bg: hsla(240, 13%, 60%, 0.3);
     --button_appearance_dark-bg: hsla(0, 0%, 0%, 0.75);
     --input-bg: hsl(240deg 13% 100% / 0.25);
-    --light-text-color: hsl(240deg 5% 40% / 80%);
+    --light-text-color: hsl(240deg 0% 0% / 60%);
     --border-color: hsl(240deg 5% 50% / 70%);
     --grey-text: hsl(0deg 0% 52% / 90%);
     --grey-border: hsla(240, 6%, 57%, 0.7);
@@ -87,7 +87,7 @@
         --button-bg: hsla(240, 13%, 60%, 0.3);
         --button_appearance_dark-bg: hsla(0, 0%, 0%, 0.75);
         --input-bg: hsl(240deg 13% 100% / 0.25);
-        --light-text-color: light-dark(hsl(240deg 5% 40% / 80%), hsl(240deg 5% 40% / 90%));
+        --light-text-color: light-dark(hsl(240deg 0% 0% / 60%), hsl(240deg 0% 100% / 60%));
         --border-color: hsl(240deg 5% 50% / 70%);
         --grey-text: light-dark(hsl(0deg 0% 52% / 90%), hsl(0deg 0% 52% / 92%));
         --grey-border: hsla(240, 6%, 57%, 0.7);
