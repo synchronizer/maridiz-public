@@ -2928,9 +2928,6 @@ html {
     position: relative;
 }
 
-.product-card__image>* {
-    mix-blend-mode: darken;
-}
 
 .product-card__category {
     background: Canvas;
