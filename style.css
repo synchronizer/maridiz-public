@@ -2442,7 +2442,6 @@ html {
 }
 .company-mini-preview {
   background-color: var(--button-bg);
-  border-radius: var(--bd-radius-S);
   display: flex;
   align-items: center;
   color: CanvasText;
