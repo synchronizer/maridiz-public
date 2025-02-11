@@ -3037,8 +3037,9 @@ html {
     margin-top: 1rem;
 }
 
-.product-preview__controls {
-    margin-top: 1rem;
+.product-preview__controls,
+.product-preview__company {
+    margin-top: .75rem;
 }
 .products-list {
     /* column-gap: 1.5rem; */
