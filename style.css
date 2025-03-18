@@ -4,7 +4,8 @@
     --black-bg: hsl(0deg 0% 14%);
     --button-bg: hsla(240, 13%, 60%, 0.3);
     --button_appearance_dark-bg: hsla(0, 0%, 0%, 0.75);
-    --input-bg: hsl(240deg 13% 100% / 0.25);
+    --input-bg: Canvas;
+    /* --input-bg: hsl(240deg 13% 100% / 0.25); */
     --light-text-color: hsl(240deg 0% 0% / 60%);
     --border-color: hsl(240deg 5% 50% / 70%);
     --grey-text: hsl(0deg 0% 52% / 90%);
@@ -86,7 +87,7 @@
         --black-bg: hsl(0deg 0% 14%);
         --button-bg: hsla(240, 13%, 60%, 0.3);
         --button_appearance_dark-bg: hsla(0, 0%, 0%, 0.75);
-        --input-bg: hsl(240deg 13% 100% / 0.25);
+        /* --input-bg: hsl(240deg 13% 100% / 0.25); */
         --light-text-color: light-dark(hsl(240deg 0% 0% / 60%), hsl(240deg 0% 100% / 60%));
         --border-color: hsl(240deg 5% 50% / 70%);
         --grey-text: light-dark(hsl(0deg 0% 52% / 90%), hsl(0deg 0% 52% / 92%));
@@ -2000,6 +2001,33 @@ html {
 .qa + .qa {
     margin-top: 0.75rem;
 }
+.search {
+    display: flex;
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    gap: .5rem;
+    z-index: 1;
+    isolation: isolate;
+  }
+  
+  .search:has(:focus) {
+    width: min(30rem, 100vw - 2rem);
+  }
+  
+  .search__input {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    z-index: 1;
+  }
+  
+  .search:has(:focus) .search__input {
+    width: auto;
+    position: static;
+    opacity: 1;
+    flex-grow: 1;
+  }
 .section {
     margin-inline: calc((100% - var(--page-width)) / 2);
     padding-inline: calc((var(--page-width) - 100%) / 2);
@@ -3462,14 +3490,19 @@ a.button {
 }
 
 .input__input {
-  height: var(--control-size-L);
+  height: var(--control-size-M);
   border: 1px solid var(--grey-border);
   box-sizing: border-box;
-  padding: 1em calc(var(--control-size-L) * .2) 0;
+  padding-inline: calc(var(--control-size-L) * .2);
   font: var(--font-text);
   font-weight: 400;
   width: 100%;
   background-color: var(--input-bg);
+}
+
+.input__label + .input__input {
+  height: var(--control-size-L);
+  padding: 1em calc(var(--control-size-L) * .2) 0;
 }
 
 .input__label {
