@@ -640,7 +640,7 @@ p {
 }
 
 .banner {
-  aspect-ratio: 2/1;
+  /* aspect-ratio: 2/1; */
   max-width: 100%;
   position: relative;
   display: flex;
@@ -2002,11 +2002,12 @@ html {
     margin-top: 0.75rem;
 }
 .search {
+    --__gap: .5rem;
     display: flex;
     position: fixed;
     bottom: 1rem;
     left: 1rem;
-    gap: .5rem;
+    gap: var(--__gap);
     z-index: 1;
     isolation: isolate;
   }
@@ -2021,13 +2022,20 @@ html {
     width: 100%;
     z-index: 1;
   }
+
+  .search__input ::-webkit-search-cancel-button {
+    display: none;
+  }
   
   .search:has(:focus) .search__input {
     width: auto;
     position: static;
     opacity: 1;
     flex-grow: 1;
+    z-index: 0;
   }
+
+  
 .section {
     margin-inline: calc((100% - var(--page-width)) / 2);
     padding-inline: calc((var(--page-width) - 100%) / 2);
@@ -3500,7 +3508,8 @@ a.button {
   background-color: var(--input-bg);
 }
 
-.input__label + .input__input {
+.input__label + .input__input,
+.input:has(.input__label) .input__input {
   height: var(--control-size-L);
   padding: 1em calc(var(--control-size-L) * .2) 0;
 }

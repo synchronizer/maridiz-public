@@ -1128,6 +1128,13 @@ document.addEventListener('keypress', e => {
     document.activeElement.click();
 })
 
+Array.from(document.querySelectorAll('.search')).forEach(search => {
+    const input = search.querySelector('input');
+    search.addEventListener('keydown', e => {
+        if (e.code !== 'Escape') return;
+        input.blur()
+    })
+})
 
 Array.from(document.querySelectorAll('.slider')).forEach(slider => {
     const time = parseFloat(slider.getAttribute('data-time')),
