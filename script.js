@@ -1135,6 +1135,58 @@ Array.from(document.querySelectorAll('.search')).forEach(search => {
         input.blur()
     })
 })
+Array.from(document.querySelectorAll(".slider-new")).forEach((slider) => {
+
+  slider.style.setProperty('--__duration', slider.getAttribute('data-duration') + 'ms');
+
+  const teasers = Array.from(slider.querySelectorAll(".slider-new__teaser")),
+    contents = Array.from(slider.querySelectorAll(".slider-new__content"));
+
+  const itemsNum = teasers.length;
+  slider.style.gridTemplateColumns = `repeat(${itemsNum}, 1fr)`;
+
+  let currentSlide = 0;
+  
+  const sliderChange = (num) => {
+    contents.forEach((content) => {
+      content.classList.remove("slider-new__content_current");
+    });
+    contents[num].classList.add("slider-new__content_current");
+  };
+
+
+  sliderChange(currentSlide);
+
+  let timerID
+
+  const play = () => {
+    slider.classList.remove('slider-new_paused')
+    timerID = setInterval(() => {
+      currentSlide = currentSlide < teasers.length - 1 ? currentSlide + 1 : 0;
+      sliderChange(currentSlide);
+    }, slider.getAttribute('data-duration'))
+  }
+
+  const pause = () => {
+    slider.classList.add('slider-new_paused')
+    clearInterval(timerID)
+  }
+
+  play()
+
+  teasers.forEach((teaser, num) => {
+
+
+    teaser.addEventListener("click", () => {
+      pause()
+      sliderChange(num);
+      currentSlide = num;
+      setTimeout(play, slider.getAttribute('data-pause'))
+    });
+
+  });
+});
+
 
 Array.from(document.querySelectorAll('.slider')).forEach(slider => {
     const time = parseFloat(slider.getAttribute('data-time')),
